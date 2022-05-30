@@ -11,7 +11,7 @@ class Movie extends Model
 {
     use HasFactory, HasUUID;
 
-    protected $fillable = ['title', 'poster'];
+    protected $fillable = ['title', 'description', 'poster'];
 
     public function schedules(): HasMany
     {

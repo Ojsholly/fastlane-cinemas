@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->string('title');
+            $table->text('description')->nullable();
             $table->text('poster');
             $table->timestamps();
         });

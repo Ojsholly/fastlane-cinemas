@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +28,34 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);
+
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
+        Response::macro('success', function ($data, $message = "", $status = ResponseAlias::HTTP_OK) {
+            return response()->json([
+                "status" => "success",
+                "message" => $message,
+                "data" => $data
+            ], $status);
+        });
+
+        Response::macro('error', function ($message, $status = ResponseAlias::HTTP_BAD_REQUEST) {
+            return response()->json([
+                "status" => "error",
+                "message" => $message
+            ], $status);
+        });
+
+        Response::macro('notFound', function ($message = "", $status = ResponseAlias::HTTP_NOT_FOUND) {
+            return response()->json([
+                "status" => "error",
+                "message" => $message
+            ], $status);
+        });
+
+        Model::preventLazyLoading(! $this->app->isProduction());
     }
 }

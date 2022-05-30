@@ -13,12 +13,16 @@ class Schedule extends Model
 
     protected $fillable = ['movie_id', 'branch_id', 'start_at'];
 
-    public function movies(): BelongsTo
+    protected $casts = [
+      'start_at' => 'datetime'
+    ];
+
+    public function movie(): BelongsTo
     {
         return $this->belongsTo(Movie::class, 'movie_id', 'uuid');
     }
 
-    public function branches(): BelongsTo
+    public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class, 'branch_id', 'uuid');
     }

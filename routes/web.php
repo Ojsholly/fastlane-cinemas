@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Index;
+use App\Http\Livewire\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', Index::class);
+
+Route::get('login', Login::class);

@@ -14,12 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         \App\Models\User::factory()->create([
+             'name' => 'Fast Lane',
+             'email' => 'admin@fastlane-cinemas.com',
+         ]);
 
         $this->call([BranchSeeder::class]);
         $this->call([MovieSeeder::class]);

@@ -39,9 +39,11 @@ class Login extends Component
         $this->message = data_get($login, 'message');
 
         if ($this->status == 'success') {
-            sleep(3);
 
-            return redirect(route('movies.create'));
+            $this->dispatchBrowserEvent('login', [
+                'status' => $this->status,
+                'message' => $this->message
+            ]);
         }
     }
 }

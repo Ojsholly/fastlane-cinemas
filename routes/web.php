@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Index::class)->name('index');
 
-Route::get('login', [GeneralController::class, 'login'])->name('login');
+Route::get('login', [GeneralController::class, 'login'])->name('login')->middleware('guest');
 
 Route::resource('movies', MovieController::class)->only('create');
 

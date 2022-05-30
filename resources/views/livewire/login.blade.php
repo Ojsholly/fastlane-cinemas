@@ -51,22 +51,11 @@
     </div>
 
     @push('scripts')
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
-            $('document').ready(function () {
-                $('#submit').click(function () {
-                    console.log("Submit button was clicked.");
-
-                    const email = $('#email').val();
-                    const password = $('#password').val();
-
-                    $.post('{{ route('api.login') }}', {
-                        email: email,
-                        password: password
-                    }, function (data, status) {
-                        console.log(status);
-                    });
-                });
+            window.addEventListener('login', event => {
+                setTimeout(function () {
+                    window.location.replace("{{ route('movies.create') }}");
+                }, 3000);
             });
         </script>
 

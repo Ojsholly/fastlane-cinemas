@@ -24,14 +24,11 @@
 
 <body>
 
-@include('layouts.partials.header')
-
 @yield('content')
-
-@include('layouts.partials.footer')
 
 @livewireScripts
 
+@stack('scripts')
 </body>
 
 </html>

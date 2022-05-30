@@ -24,4 +24,4 @@ Route::apiResource('movies', MovieController::class)->only('index', 'show');
 
 Route::get('branches', FetchBranchesController::class);
 
-Route::post('login', FetchUsersController::class);
+Route::post('login', FetchUsersController::class)->name('api.login');

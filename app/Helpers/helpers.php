@@ -17,6 +17,7 @@ if (!function_exists('call')) {
 
         return (object) [
             'status_code' => $response->getStatusCode(),
+            'status' => json_decode($response->getContent())->status,
             'message' => json_decode($response->getContent())->message ?? '',
             'data' => json_decode($response->getContent())->data ?? ''
         ];

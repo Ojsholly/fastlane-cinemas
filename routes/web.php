@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\MovieController;
 use App\Http\Livewire\Index;
+use App\Http\Livewire\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Index::class);
+Route::get('/', Index::class)->name('index');
+
+Route::get('login', [GeneralController::class, 'login'])->name('login')->middleware('guest');
+
+Route::resource('movies', MovieController::class)->only('create');
+

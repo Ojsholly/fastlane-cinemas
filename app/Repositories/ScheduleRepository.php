@@ -18,4 +18,13 @@ class ScheduleRepository implements ScheduleRepositoryInterface
     {
         return Schedule::with($relations)->where($params)->get();
     }
+
+    /**
+     * @param array $params
+     * @return Schedule
+     */
+    public function createSchedule(array $params): Schedule
+    {
+        return Schedule::create($params);
+    }
 }

@@ -17,6 +17,8 @@ class Schedule extends Model
       'start_at' => 'datetime'
     ];
 
+    protected $with = ['branch'];
+
     public function movie(): BelongsTo
     {
         return $this->belongsTo(Movie::class, 'movie_id', 'uuid');

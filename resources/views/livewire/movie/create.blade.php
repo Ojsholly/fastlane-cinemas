@@ -4,13 +4,13 @@
             <h3 class="font-bold text-2xl text-center">Add New Movie Schedule</h3>
         </section>
 
-        @if($success)
+        @if($status)
             <div class="inline-flex w-full overflow-hidden bg-gray-100 rounded-lg shadow-2xl">
-                <div class="flex items-center justify-center w-12 bg-green-500"></div>
+                <div @class(['flex', 'items-center', 'justify-center', 'w-12', $status == 'success' => 'bg-green-500', $status == 'error' => 'bg-red-500'])></div>
 
                 <div class="px-3 py-2 text-left">
-                    <span class="font-semibold text-green-500">Success</span>
-                    <p class="mb-1 text-sm leading-none text-gray-500">{{ $success }}</p>
+                    <span @class(['font-semibold', $status == 'success' => 'text-green-500', $status == 'error' => 'text-red-500'])>Success</span>
+                    <p class="mb-1 text-sm leading-none text-gray-500">{{ $message }}</p>
                 </div>
             </div>
         @endif
@@ -99,8 +99,8 @@
     <script>
         window.addEventListener('created', event => {
             setTimeout(function () {
-                window.location.replace("{{ route('index') }}");
-            });
+                window.location.reload(true);
+            }, 3000);
         });
     </script>
 

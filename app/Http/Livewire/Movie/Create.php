@@ -18,7 +18,8 @@ class Create extends Component
     public $poster;
     public $date;
     public $time;
-    public $success;
+    public $status;
+    public $message;
 
     public $rules = [
         'title' => 'required|min:5|unique:movies,title',

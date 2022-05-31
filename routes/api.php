@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('schedules', FetchSchedulesController::class);
 
-Route::apiResource('movies', MovieController::class)->only('index', 'show');
+Route::apiResource('movies', MovieController::class)->only('index', 'show', 'store');
 
 Route::get('branches', FetchBranchesController::class);
 

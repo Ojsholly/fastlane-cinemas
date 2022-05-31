@@ -21,5 +21,5 @@ Route::get('/', Index::class)->name('index');
 
 Route::get('login', [GeneralController::class, 'login'])->name('login')->middleware('guest');
 
-Route::resource('movies', MovieController::class)->only('create');
+Route::resource('movies', MovieController::class)->only('create')->middleware('auth');
 

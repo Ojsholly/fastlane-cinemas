@@ -12,4 +12,9 @@ class MovieRepository implements MovieRepositoryInterface
     {
         return Movie::with($relations)->get();
     }
+
+    public function create(array $params): Movie
+    {
+        return Movie::create($params);
+    }
 }
